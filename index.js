@@ -30,8 +30,8 @@ function App() {
 
       const data = await response.json();
 
-      // Extract and update mealSuggestions state with the API response data
-      setMealSuggestions(data.choices.map((choice) => choice.message.content));
+      const suggestions = data.choices.map((choice) => choice.message.content);
+      setMealSuggestions(suggestions);
 
     } catch (error) {
       console.error('Error:', error);
@@ -54,12 +54,18 @@ function App() {
         </label>
         <button type="submit" className="submit-button">Get Meal Suggestions</button>
       </form>
-      <h2 className="suggestions-title">Meal Suggestions:</h2>
-      <ul className="suggestions-list">
-        {mealSuggestions.map((suggestion, index) => (
-          <li key={index} className="suggestion">{suggestion}</li>
-        ))}
-      </ul>
+      <div className="result-box">
+        <h2 className="result-title">Meal Suggestions:</h2>
+        {mealSuggestions.length > 0 ? (
+          <ul className="result-list">
+            {mealSuggestions.map((suggestion, index) => (
+              <li key={index} className="result-item">{suggestion}</li>
+            ))}
+          </ul>
+        ) : (
+          <p className="no-suggestions">No meal suggestions found.</p>
+        )}
+      </div>
     </div>
   );
 }
