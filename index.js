@@ -23,7 +23,7 @@ function App() {
         body: JSON.stringify({
           messages: [
             { role: 'system', content: 'You: ' + ingredients },
-            { role: 'system', content: 'You: What can I cook with these ingredients?' },
+            { role: 'system', content: 'You: What can I cook with these ingredients? Helo me generate a meal recipe using some or all of these ingredients. Feel free to suggest salt or other spices I may not have included ' },
           ],
         }),
       });
