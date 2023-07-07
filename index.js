@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import './style.css';
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer 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',
+          'Authorization': 'Bearer YOUR_API_KEY',
         },
         body: JSON.stringify({
           messages: [
@@ -70,4 +70,4 @@ function App() {
   );
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+createRoot(document.getElementById('root')).render(<App />);
