@@ -30,8 +30,12 @@ function App() {
 
       const data = await response.json();
 
-      const suggestions = data.choices.map((choice) => choice.message.content);
-      setMealSuggestions(suggestions);
+      if (data.choices && data.choices.length > 0) {
+        const suggestions = data.choices.map((choice) => choice.message.content);
+        setMealSuggestions(suggestions);
+      } else {
+        setMealSuggestions([]);
+      }
 
     } catch (error) {
       console.error('Error:', error);
